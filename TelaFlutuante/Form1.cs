@@ -92,13 +92,22 @@ namespace TelaFlutuante
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (Form form in Application.OpenForms)
+
+            while (Application.OpenForms.Count > 1)
             {
-                if (form != this)
+
+                for (int i = 0; i < Application.OpenForms.Count; i++)
                 {
-                    form.Close();
+                    Form frm = Application.OpenForms[i];
+
+                    if (frm != this)
+                    {
+                        frm.Close();
+                    }
+
                 }
-            }
+            }      
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
